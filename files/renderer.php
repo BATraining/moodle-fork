@@ -809,6 +809,145 @@ class core_files_renderer extends plugin_renderer_base {
 </div>';
         return $rv;
     }
+    
+	/* MDL-50396 :  multiple selection general layout */
+    private function fp_js_template_multigenerallayout() {
+        $rv = '
+<div tabindex="0" class="file-picker fp-multigenerallayout" role="dialog" aria-live="assertive">
+    <div class="fp-repo-area">
+        <ul class="fp-list">
+            <li class="fp-repo">
+                <a href="#"><img class="fp-repo-icon" alt=" " width="16" height="16" />&nbsp;<span class="fp-repo-name"></span></a>
+            </li>
+        </ul>
+    </div>
+    <div class="fp-repo-items" tabindex="0">
+        <div class="fp-navbar">
+            <div>
+                <div class="fp-toolbar">
+                    <div class="fp-tb-back">
+                        <a href="#">'.get_string('back', 'repository').'</a>
+                    </div>
+                    <div class="fp-tb-search">
+                        <form></form>
+                    </div>
+                    <div class="fp-tb-refresh">
+                        <a title="'. get_string('refresh', 'repository') .'" href="#">
+                            <img alt=""  src="'.$this->pix_url('a/refresh').'" />
+                        </a>
+                    </div>
+                    <div class="fp-tb-logout">
+                        <a title="'. get_string('logout', 'repository') .'" href="#">
+                            <img alt="" src="'.$this->pix_url('a/logout').'" />
+                        </a>
+                    </div>
+                    <div class="fp-tb-manage">
+                        <a title="'. get_string('settings', 'repository') .'" href="#">
+                            <img alt="" src="'.$this->pix_url('a/setting').'" />
+                        </a>
+                    </div>
+                    <div class="fp-tb-help">
+                        <a title="'. get_string('help', 'repository') .'" href="#">
+                            <img alt="" src="'.$this->pix_url('a/help').'" />
+                        </a>
+                    </div>
+                    <div class="fp-tb-message"></div>
+                </div>
+                <div class="fp-viewbar">
+                    <a role="button" title="'. get_string('displayicons', 'repository') .'" class="fp-vb-done" href="#">
+                        <img alt="" src="'. $this->pix_url('e/tick', 'core') .'" />
+                    </a>
+                    <a role="button" title="'. get_string('displayicons', 'repository') .'" class="fp-vb-icons" href="#">
+                        <img alt="" src="'. $this->pix_url('fp/view_icon_active', 'theme') .'" />
+                    </a>
+                    <a role="button" title="'. get_string('displaydetails', 'repository') .'" class="fp-vb-details" href="#">
+                        <img alt="" src="'. $this->pix_url('fp/view_list_active', 'theme') .'" />
+                    </a>
+                    <a role="button" title="'. get_string('displaytree', 'repository') .'" class="fp-vb-tree" href="#">
+                        <img alt="" src="'. $this->pix_url('fp/view_tree_active', 'theme') .'" />
+                    </a>
+                </div>
+                <div class="fp-clear-left"></div>
+            </div>
+            <div class="fp-pathbar">
+                 <span class="fp-path-folder"><a class="fp-path-folder-name" href="#"></a></span>
+            </div>
+        </div>
+        <div class="fp-content"></div>
+    </div>
+</div>';
+        return $rv;
+    }
+	
+    /* MDL-50396 :  multiple selection layout */
+    private function fp_js_template_multiselectlayout() {
+        $rv = '
+<div class="file-picker fp-select">
+    <div class="fp-select-loading">
+        <img src="'.$this->pix_url('i/loading_small').'" />
+    </div>
+    <form class="form-horizontal">
+        <div class="fp-forminset">
+                <div class="fp-linktype-2 control-group control-radio clearfix">
+                    <label class="control-label control-radio">'.get_string('makefileinternal', 'repository').'</label>
+                    <div class="controls control-radio">
+                        <input type="radio"/>
+                    </div>
+                </div>
+                <div class="fp-linktype-1 control-group control-radio clearfix">
+                    <label class="control-label control-radio">'.get_string('makefilelink', 'repository').'</label>
+                    <div class="controls control-radio">
+                        <input type="radio"/>
+                    </div>
+                </div>
+                <div class="fp-linktype-4 control-group control-radio clearfix">
+                    <label class="control-label control-radio">'.get_string('makefilereference', 'repository').'</label>
+                    <div class="controls control-radio">
+                        <input type="radio"/>
+                    </div>
+                </div>
+                <div class="fp-saveas control-group clearfix">
+                    <label class="control-label">Save as</label>
+                    <div class="controls">
+                        <input type="text"/>
+                    </div>
+                </div>
+                <div class="fp-setauthor control-group clearfix">
+                    <label class="control-label">'.get_string('author', 'repository').'</label>
+                    <div class="controls">
+                        <input type="text"/>
+                    </div>
+                </div>
+                <div class="fp-setlicense control-group clearfix">
+                    <label class="control-label">'.get_string('chooselicense', 'repository').'</label>
+                    <div class="controls">
+                        <select></select>
+                    </div>
+                </div>
+        </div>
+       <div class="fp-select-buttons">
+            <button class="fp-select-confirm btn-primary btn">'.get_string('getfile', 'repository').'</button>
+            <button class="fp-select-cancel btn-cancel btn">'.get_string('cancel').'</button>
+        </div>
+    </form>
+    <div class="fp-info clearfix">
+        <div class="fp-hr"></div>
+        <p class="fp-thumbnail"></p>
+        <div class="fp-fileinfo">
+            <div class="fp-datemodified">'.get_string('lastmodified', 'repository').'<span class="fp-value"></span></div>
+            <div class="fp-datecreated">'.get_string('datecreated', 'repository').'<span class="fp-value"></span></div>
+            <div class="fp-size">'.get_string('size', 'repository').'<span class="fp-value"></span></div>
+            <div class="fp-license">'.get_string('license', 'repository').'<span class="fp-value"></span></div>
+            <div class="fp-author">'.get_string('author', 'repository').'<span class="fp-value"></span></div>
+            <div class="fp-dimensions">'.get_string('dimensions', 'repository').'<span class="fp-value"></span></div>
+        </div>
+    </div>
+</div>';
+        return $rv;
+   }
+    
+    
+    
 
     /**
      * FilePicker JS template for 'Upload file' repository

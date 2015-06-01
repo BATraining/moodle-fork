@@ -16,6 +16,24 @@ div.logo {
     float: right;
 }
 
+/*
+ *  Multi select: MDL-50396
+ */
+ /* Custom CSS for file picker changes */
+.fp-selected,
+.fp-selected .fp-filename{
+    color: #BFBFBF !important;
+    font-style: italic;
+}
+
+.fp-selected span.fp-icon,
+.fp-selected div.fp-thumbnail{
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* msie */
+}
+
+
+
 /* Custom CSS Settings
 -------------------------*/
 [[setting:customcss]]

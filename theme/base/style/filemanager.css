@@ -458,6 +458,9 @@ a.ygtvspacer:hover {color:transparent;text-decoration:none;}
 .dir-rtl .file-picker .fp-fileinfo .fp-value { display: inline-block; padding: 0 5px 0 0; }
 .dir-rtl .fp-formset div {text-align:right;}
 .dir-rtl .fp-formset label {float:right;text-align:left; margin:0 0 0 10px;}
+
+
+
 /**
  * Responsive styles for the filepicker
  */
